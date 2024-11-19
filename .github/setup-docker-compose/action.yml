@@ -12,7 +12,7 @@ inputs:
     description: Refer to build-push-action for usage
   cache-to:
     required: false
-    default: ''
+    default: ""
     description: Refer to build-push-action for usage
   omniout-token:
     required: true
@@ -35,8 +35,6 @@ runs:
     - uses: docker/setup-buildx-action@v1
     - name: Build
       uses: docker/build-push-action@v2
-      env:
-        OMNIOUT_TOKEN: ${{ inputs.omniout-token }}
       with:
         context: .
         load: true
@@ -45,7 +43,6 @@ runs:
         cache-to: ${{ inputs.cache-to }}
         build-args: |
           PROD_ASSETS=1
-          OMNIOUT_TOKEN=${{ inputs.omniout-token }}
     - name: Add tag alias for compose
       id: tag
       shell: bash

@@ -1,6 +1,5 @@
 ARG BUILD_ENV=development
 ARG PROD_ASSETS
-ARG OMNIOUT_TOKEN
 FROM node:22 AS node_base
 FROM python:3.9
 
@@ -33,7 +32,6 @@ WORKDIR /app
 # Env setup:
 ENV PYTHONPATH=/app
 ENV DJANGO_SETTINGS_MODULE=config.settings.production
-ENV OMNIOUT_TOKEN=${OMNIOUT_TOKEN}
 
 # Install sfdx
 RUN npm install --location=global sfdx-cli --ignore-scripts
